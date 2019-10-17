@@ -4,21 +4,36 @@
             <input type="submit" value="+" class="new-msg-form-submit">
             <input v-model="newMsg" type="text" class="new-msg-form-input" name="new-msg" placeholder="Your message">
         </form>
+        <p v-if="feedback" class="new-msg-form-feedback feedback">{{ feedback }}</p>
     </div>
 </template>
 
 <script>
+import db from "@/firebase/init";
+
 export default {
     name: "NewMessage",
     props: ["username"],
     data() {
         return {
-            newMsg: null
+            newMsg: null,
+            feedback: null
         }
     },
     methods: {
         addMsg() {
-            console.log(this.newMsg, this.username, Date.now());
+            if (this.newMsg) {
+                db.collection("messages").add({
+                    content: this.newMsg,
+                    name: this.username,
+                    timestamp: Date.now()
+                }).catch(err => console.error(err));
+
+                this.newMsg = null;
+                this.feedback = null;
+            } else {
+                this.feedback = "Please enter a message before posting.";
+            }
         }
     }
 

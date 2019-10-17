@@ -8,7 +8,7 @@
         <div class="home-login-form-field">
           <label for="username" class="home-login-form-field-label">Sign in to continue</label>
           <input v-model="username" type="text" id="username" name="username" class="home-login-form-field-input" placeholder="Your username">
-          <p v-if="feedback" class="home-login-feedback">{{ feedback }}</p>
+          <p v-if="feedback" class="home-login-feedback feedback">{{ feedback }}</p>
         </div>
         <input type="submit" class="home-login-submit" value="Enter Chatroom">
       </form>
@@ -116,7 +116,8 @@ export default {
   background-color: hsl(218, 17%, 23%);
 }
 
-.home-login-feedback {
+.home-login-feedback,
+.feedback {
   margin-top: .75rem;
   color: hsl(0, 61%, 45%);
   font-weight: 500;

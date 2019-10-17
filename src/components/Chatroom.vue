@@ -2,16 +2,16 @@
     <div class="chatroom">
         <h1 class="chatroom-title">Chatroom</h1>
         <section class="chatroom-card">
-            <article class="chatroom-card-content">
-                <ul class="chatroom-card-content-list">
-                    <li class="chatroom-card-content-list-item">
+            <div class="chatroom-card-content">
+                <ul class="chatroom-card-content-list" ref="list">
+                    <li v-for="message in messages" :key="message.id" class="chatroom-card-content-list-item">
                         <img src="" alt="User avatar" class="chatroom-card-content-list-img">
-                        <span class="chatroom-card-content-list-name">Name</span>
-                        <span class="chatroom-card-content-list-time">Time</span>
-                        <p class="chatroom-card-content-list-msg">Message</p>
+                        <span class="chatroom-card-content-list-name">{{ message.name }}</span>
+                        <span class="chatroom-card-content-list-time">{{ message.timestamp }}</span>
+                        <p class="chatroom-card-content-list-msg">{{ message.content }}</p>
                     </li>
                 </ul>
-            </article>
+            </div>
             <div class="chatroom-card-action">
                 <NewMessage :username="username"/>
             </div>
@@ -21,6 +21,7 @@
 
 <script>
 import NewMessage from "@/components/NewMessage";
+import db from "@/firebase/init";
 
 export default {
     name: "Chatroom",
@@ -30,10 +31,45 @@ export default {
     },
     data() {
         return {
-
+            messages: []
         }
     },
-  
+    methods: {
+        formatDate(date) {
+            return new Intl.DateTimeFormat("en-US", {
+                year: "numeric",
+                day: "numeric",
+                month: "long",
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true
+            }).format(date);
+        },
+        scrollToBottomMessages() {
+            const chatSection = this.$refs.list;
+            chatSection.scrollTop = chatSection.scrollHeight;
+        }
+    },
+    created() {
+        const reference = db.collection("messages").orderBy("timestamp");
+
+        reference.onSnapshot(snapshot => {
+            snapshot.docChanges().forEach(update => {
+                if (update.type == "added") {
+                    const doc = update.doc;
+                    this.messages.push({
+                        id: doc.id,
+                        name: doc.data().name,
+                        content: doc.data().content,
+                        timestamp: this.formatDate(doc.data().timestamp)
+                    })
+                }
+            });
+        });
+    },
+    updated() {
+        this.scrollToBottomMessages(); // Call scroll to bottom of ul after
+    }
 }
 </script>
 
@@ -58,6 +94,24 @@ export default {
 
 .chatroom-card-content-list {
     list-style: none;
+    max-height: 27rem;
+    overflow: auto;
+}
+
+.chatroom-card-content-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.chatroom-card-content-list::-webkit-scrollbar-track {
+    background-color: #cecece;
+}
+
+.chatroom-card-content-list::-webkit-scrollbar-thumb {
+    background-color: #9a9a9a;
+}
+
+.chatroom-card-content-list-item {
+    margin-bottom: 2rem;
 }
 
 .chatroom-card-content-list-img {
@@ -71,7 +125,7 @@ export default {
 
 .chatroom-card-content-list-time {
     color: #999;
-    font-size: .95rem;
+    font-size: .9rem;
 }
 
 .chatroom-card-content-list-msg {
