@@ -16,7 +16,14 @@ export default new Router ({
             path: "/chatroom",
             name: "Chatroom",
             component: Chatroom,
-            props: true
+            props: true,
+            beforeEnter: (to, from, next) => {
+                if (to.params.username) {
+                    next();
+                } else {
+                    next({ name: "Home" });
+                }
+            }
         }
     ]
 
