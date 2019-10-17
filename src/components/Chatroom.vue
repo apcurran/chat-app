@@ -8,12 +8,13 @@
 <script>
 export default {
     name: "Chatroom",
+    props: ["username"],
     data() {
         return {
 
         }
     },
-    props: ["username"]
+  
 }
 </script>
 
