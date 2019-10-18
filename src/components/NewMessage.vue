@@ -74,4 +74,8 @@ export default {
     border-bottom-right-radius: 4px;
 }
 
+.new-msg-form-input::placeholder {
+    color: #b6b6b6;
+}
+
 </style>

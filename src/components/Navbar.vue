@@ -24,7 +24,7 @@
 .nav-item-link {
     color: #151515;
     text-decoration: none;
-    font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+    font-family: 'Work Sans', sans-serif;
 }
 
 </style>

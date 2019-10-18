@@ -1,10 +1,11 @@
 <template>
   <div class="home">
     <figure class="home-hero">
-      <img class="home-hero-img" src="../assets/chat-welcome.svg" alt="Man">
+      <img class="home-hero-img" src="../assets/chat-welcome.svg" alt="User avatar">
     </figure>
     <section class="home-login">
       <form @submit.prevent="enterChat" class="home-login-form">
+        <h1 class="home-login-title">Swift Chat</h1>
         <div class="home-login-form-field">
           <label for="username" class="home-login-form-field-label">Sign in to continue</label>
           <input v-model="username" type="text" id="username" name="username" class="home-login-form-field-input" placeholder="Your username">
@@ -74,6 +75,12 @@ export default {
   flex-direction: column;
 }
 
+.home-login-title {
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
 .home-login-form-field {
   display: flex;
   flex-direction: column;
@@ -95,7 +102,7 @@ export default {
 }
 
 .home-login-form-field-input::placeholder {
-  color: #bbb;
+  color: #b6b6b6;
 }
 
 .home-login-submit {
@@ -122,7 +129,5 @@ export default {
   color: hsl(0, 61%, 45%);
   font-weight: 500;
 }
-
-
 
 </style>

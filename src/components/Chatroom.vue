@@ -1,8 +1,7 @@
 <template>
     <div class="chatroom">
-        <!-- insert Navbar here -->
         <Navbar/>
-        <h1 class="chatroom-title">Chatroom</h1>
+        <h1 class="chatroom-title">Swift Chat</h1>
         <section class="chatroom-card">
             <div class="chatroom-card-content">
                 <ul class="chatroom-card-content-list" ref="list">
@@ -72,7 +71,7 @@ export default {
         });
     },
     updated() {
-        this.scrollToBottomMessages(); // Call scroll to bottom of ul after
+        this.scrollToBottomMessages();
     }
 }
 </script>
@@ -87,6 +86,8 @@ export default {
 .chatroom-title {
     margin: 2rem;
     text-align: center;
+    font-weight: 400;
+    font-size: 2.35rem;
 }
 
 .chatroom-card {

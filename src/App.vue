@@ -5,6 +5,7 @@
 </template>
 
 <style>
+/* Global styles */
 
 * {
   margin: 0;
@@ -19,7 +20,7 @@
 
 html,
 button {
-  font-family: sans-serif;
+  font-family: 'Work Sans', sans-serif;
   letter-spacing: .02em;
 }
 
