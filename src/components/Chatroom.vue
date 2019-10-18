@@ -17,6 +17,7 @@
                 <NewMessage :username="username"/>
             </div>
         </section>
+        <div class="big-circle"></div>
     </div>
 </template>
 
@@ -79,6 +80,7 @@ export default {
 <style>
 
 .chatroom {
+    position: relative;
     min-height: 100vh;
     background-color: var(--light-grey-blue);
 }
@@ -87,7 +89,8 @@ export default {
     margin: 2rem;
     text-align: center;
     font-weight: 400;
-    font-size: 2.35rem;
+    font-size: 2.5rem;
+    color: #6c63ff;
 }
 
 .chatroom-card {
@@ -98,6 +101,22 @@ export default {
     box-shadow: 0 5px 10px rgba(0, 0, 0, .175);
     background-color: #fff;
 }
+
+/* Decorative circle */
+.chatroom::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 22px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #6c63ff;
+    opacity: .2;
+    pointer-events: none;
+}
+/* End decorative circle */
 
 .chatroom-card-content {
     padding: 3rem 2rem;
@@ -148,6 +167,18 @@ export default {
 
 .chatroom-card-action {
     padding: 2rem;
+}
+
+@media screen and (max-width: 35em) {
+    .chatroom-title {
+        font-size: 2.1rem;
+        margin: 1rem 0 1.5rem 0;
+    }
+
+    .chatroom-card-content-list {
+        max-height: 19rem;
+        overflow: auto;
+    }
 }
 
 </style>

@@ -22,6 +22,9 @@
 }
 
 .nav-item-link {
+    display: inline-block;
+    width: 100%;
+    padding: .4rem .125rem .3rem .125rem;
     color: #151515;
     text-decoration: none;
     font-family: 'Work Sans', sans-serif;

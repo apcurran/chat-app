@@ -79,6 +79,7 @@ export default {
   margin-bottom: 2.5rem;
   font-size: 2.5rem;
   font-weight: 400;
+  color: #6c63ff;
 }
 
 .home-login-form-field {
@@ -128,6 +129,15 @@ export default {
   margin-top: .75rem;
   color: hsl(0, 61%, 45%);
   font-weight: 500;
+}
+
+@media screen and (max-width: 35em) {
+  .home {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+  }
+
 }
 
 </style>
