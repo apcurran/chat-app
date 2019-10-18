@@ -54,6 +54,14 @@ export default {
     border-bottom-left-radius: 4px;
     border: none;
     cursor: pointer;
+
+    background-color: #6c63ff;
+    color: #fff;
+    transition: background-color 150ms ease-in-out;
+}
+
+.new-msg-form-submit:hover {
+    background-color: hsl(243, 100%, 60%);
 }
 
 .new-msg-form-input {

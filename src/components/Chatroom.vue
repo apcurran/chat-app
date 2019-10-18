@@ -1,11 +1,13 @@
 <template>
     <div class="chatroom">
+        <!-- insert Navbar here -->
+        <Navbar/>
         <h1 class="chatroom-title">Chatroom</h1>
         <section class="chatroom-card">
             <div class="chatroom-card-content">
                 <ul class="chatroom-card-content-list" ref="list">
                     <li v-for="message in messages" :key="message.id" class="chatroom-card-content-list-item">
-                        <img src="" alt="User avatar" class="chatroom-card-content-list-img">
+                        <img loading="lazy" src="../assets/icon-user.svg" alt="User avatar" width="30" height="30" class="chatroom-card-content-list-img">
                         <span class="chatroom-card-content-list-name">{{ message.name }}</span>
                         <span class="chatroom-card-content-list-time">{{ message.timestamp }}</span>
                         <p class="chatroom-card-content-list-msg">{{ message.content }}</p>
@@ -20,6 +22,7 @@
 </template>
 
 <script>
+import Navbar from "@/components/Navbar";
 import NewMessage from "@/components/NewMessage";
 import db from "@/firebase/init";
 
@@ -27,6 +30,7 @@ export default {
     name: "Chatroom",
     props: ["username"],
     components: {
+        Navbar,
         NewMessage
     },
     data() {
@@ -75,6 +79,11 @@ export default {
 
 <style>
 
+.chatroom {
+    min-height: 100vh;
+    background-color: var(--light-grey-blue);
+}
+
 .chatroom-title {
     margin: 2rem;
     text-align: center;
@@ -86,6 +95,7 @@ export default {
     margin: 0 auto;
 
     box-shadow: 0 5px 10px rgba(0, 0, 0, .175);
+    background-color: #fff;
 }
 
 .chatroom-card-content {
@@ -111,7 +121,7 @@ export default {
 }
 
 .chatroom-card-content-list-item {
-    margin-bottom: 2rem;
+    margin-bottom: 3.5rem;
 }
 
 .chatroom-card-content-list-img {
@@ -121,6 +131,8 @@ export default {
 
 .chatroom-card-content-list-name {
     margin-right: .9rem;
+    font-weight: 600;
+    font-size: .95rem;
 }
 
 .chatroom-card-content-list-time {
@@ -129,7 +141,8 @@ export default {
 }
 
 .chatroom-card-content-list-msg {
-    margin-top: 1rem;
+    margin-top: .75rem;
+    margin-left: 2.75rem;
 }
 
 .chatroom-card-action {
