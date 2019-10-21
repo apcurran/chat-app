@@ -1,29 +1,37 @@
-# chat-app
+# Chatroom App
+Live Chatroom/Message Board
 
-## Project setup
-```
-npm install
-```
+Project [link](https://chat-app-bb29b.firebaseapp.com/)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Features:
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- Vue JS functionality includes:
 
-### Run your tests
-```
-npm run test
-```
+    - Components
 
-### Lints and fixes files
-```
-npm run lint
-```
+    - Vue Router
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+    - Route Guards
+
+    - Passing and receiving of props
+
+    - Refs
+
+- Vanilla JS functionality includes:
+
+    - Basic date formatting without Moment.js
+
+    - Auto-scroll to the bottom of messages ul 
+
+- Firebase functionality includes:
+
+    - Firestore for database
+
+    - Firebase hosting
+
+
+- CSS Grid and Flexbox used throughout
+
+- CSS variables (custom properties) used
+
+- Mobile-friendly layout
