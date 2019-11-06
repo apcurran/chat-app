@@ -3,6 +3,8 @@ Live Chatroom/Message Board
 
 Project [link](https://chat-app-bb29b.firebaseapp.com/)
 
+![Chat App](https://github.com/apcurran/chat-app/blob/master/src/assets/chat-app.jpg)
+
 ## Features:
 
 - Vue JS functionality includes:
